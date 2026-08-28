@@ -31,7 +31,7 @@ if st.button("Genera Referto SOAP"):
                     {"role": "system", "content": prompt_sistema},
                     {"role": "user", "content": appunti_grezzi }
                 ],
-                model="llama-3.1-8b-instant",
+                model="gemma2-9b-it",
                 temperature = 0.1   ## Temperatura bassissima = zero creatività, massima precisione
             )
             
