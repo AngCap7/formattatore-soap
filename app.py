@@ -50,7 +50,7 @@ if st.button("Genera Referto SOAP"):
         # Creazione del bottone per il download del PDF
         st.download_button(
             label="📄 Scarica Referto (.pdf)",
-            data=bytes(pdf.output(),
+            data=bytes(pdf.output()),
             file_name="referto_SOAP.pdf",
             mime="application/pdf"
         )
