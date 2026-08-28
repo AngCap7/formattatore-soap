@@ -37,14 +37,16 @@ if st.button("Genera Referto SOAP"):
             
         # Estraiamo il testo dalla risposta di Groq e lo stampiamo a schermo
         st.success("Referto completato!")
-        st.markdown(risposta.choices[0].message.content)
-
+        testo_referto = risposta.choices[0].message.content
+        st.markdown(testo_referto)
+        
+        # NUOVO CODICE: Il bottone per scaricare il file
         st.download_button(
-                label="📥 Scarica Referto (.txt)",
-                data=testo_referto,
-                file_name="referto_SOAP.txt",
-                mime="text/plain"
-            )
+            label="📥 Scarica Referto (.pdf)",
+            data=testo_referto,
+            file_name="referto_SOAP.pdf",
+            mime="text/plain"
+        )
 
     else:
         # Messaggio di errore se il medico clicca il bottone senza aver scritto nulla
