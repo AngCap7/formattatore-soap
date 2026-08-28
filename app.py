@@ -31,7 +31,7 @@ if st.button("Genera Referto SOAP"):
                     {"role": "system", "content": prompt_sistema},
                     {"role": "user", "content": appunti_grezzi }
                 ],
-                model="mixtral-8x7b-32768",
+                model = "qwen/qwen3.8-27b",
                 temperature = 0.1   ## Temperatura bassissima = zero creatività, massima precisione
             )
             
