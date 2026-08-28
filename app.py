@@ -39,6 +39,13 @@ if st.button("Genera Referto SOAP"):
         st.success("Referto completato!")
         st.markdown(risposta.choices[0].message.content)
 
+        st.download_button(
+                label="📥 Scarica Referto (.txt)",
+                data=testo_referto,
+                file_name="referto_SOAP.txt",
+                mime="text/plain"
+            )
+
     else:
         # Messaggio di errore se il medico clicca il bottone senza aver scritto nulla
         st.error("Per favore, inserisci degli appunti prima di generare il referto.")
