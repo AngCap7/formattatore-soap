@@ -1,5 +1,6 @@
 import streamlit as st
 from groq import Groq
+from fpdf import FPDF
 
 # Ricordati di usare una NUOVA chiave!
 client = Groq(api_key=st.secrets["GROQ_API_KEY"])
@@ -40,14 +41,19 @@ if st.button("Genera Referto SOAP"):
         testo_referto = risposta.choices[0].message.content
         st.markdown(testo_referto)
         
-        # NUOVO CODICE: Il bottone per scaricare il file
+        # Generazione del PDF in memoria
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font("helvetica", size=12)
+        pdf.multi_cell(0, 10, text=testo_referto)
+        
+        # Creazione del bottone per il download del PDF
         st.download_button(
-            label="📥 Scarica Referto (.pdf)",
-            data=testo_referto,
+            label="📄 Scarica Referto (.pdf)",
+            data=pdf.output(),
             file_name="referto_SOAP.pdf",
-            mime="text/plain"
+            mime="application/pdf"
         )
-
     else:
         # Messaggio di errore se il medico clicca il bottone senza aver scritto nulla
         st.error("Per favore, inserisci degli appunti prima di generare il referto.")
